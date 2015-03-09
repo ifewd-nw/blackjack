@@ -117,9 +117,3 @@
         $("#dealer-hand").append(dealer[0].display());
         $("#dealer-hand").append("<div class='card'>hidden</div>"); // don't show the dealer's second card
     }
-  };
- 
-  Card.prototype.toggleVisibility = function() {
-    this.visible = !this.visible;
-    return this.display();
-  };

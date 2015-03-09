@@ -118,6 +118,14 @@
         $("#dealer-hand").append("<div class='card'>hidden</div>"); // don't show the dealer's second card
     }
 
+    // TODO: add event handler when player clicks on 'Hit' button - player will be dealt another card from the deck.
+    
+    // TODO: add event handler when player clicks on 'Stand' button - dealer starts its turn
+    
+    // TODO: add function for dealer to determine if the dealer is going to either 'hit' or 'stand'
+
+    // TODO: add function to determine the winner
+
     /**
      * Start the game of BlackJack.
      */

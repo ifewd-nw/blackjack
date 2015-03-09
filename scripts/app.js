@@ -101,6 +101,21 @@
         return deck.shift();            // get and remove first Card from the deck
     }
 
+    /**
+     * Show the initial two cards dealt for the player, and one card for the 
+     * dealer with the second card for the dealer being hidden.
+     * @param  {Array} player the player's initial hand
+     * @param  {Array} dealer the dealer's initial hand
+     */
+    function showInitialHands(player, dealer) {
+        // show the player's cards
+        player.forEach(function(value) {
+            $("#player-hand").append(value.display());
+        });
+
+        // show the dealer's first card, but not the second
+        $("#dealer-hand").append(dealer[0].display());
+        $("#dealer-hand").append("<div class='card'>hidden</div>"); // don't show the dealer's second card
     }
   };
  

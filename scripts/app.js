@@ -92,6 +92,15 @@
         return deck;
     }
 
+    /**
+     * Get a Card from the deck
+     * @param  {Array} deck to pull a card from
+     * @return {Card}      next card from the deck
+     */
+    function dealACard(deck) {
+        return deck.shift();            // get and remove first Card from the deck
+    }
+
     }
   };
  

@@ -39,6 +39,8 @@
             }
         }
     };
+
+    /**
      * Method that constructs the HTML for displaying the Card.
      * @return {jQuery object} formatted HTML string for the Card
      */
@@ -58,6 +60,37 @@
         HEARTS: { value: 3, name: 'Hearts' },
         DIAMONDS: { value: 4, name: 'Diamonds' }
     });
+
+    /**
+     * Create a new deck of 52 cards
+     * @return {Array} new deck of cards
+     */
+    function createDeck() {
+        var deck = [];
+        for (var i = Suit.SPADES.value; i <= Suit.DIAMONDS.value; i++) {
+            for (var j = 1; j <= 13; j++) {
+                var card = new Card(j, i);
+                deck.push(card);
+            }
+        }
+        return deck;
+    }
+
+    /**
+     * Shuffle the deck to create a random order. 
+     * Uses Durstenfeld version of Fisher-Yates shuffle algorithm.
+     * @param  {Array} deck the deck to shuffle
+     * @return {Array} returns the shuffled deck of cards
+     */
+    function shuffleDeck(deck) {
+        for (var i = deck.length-1; i > 0; i--) {
+            var randVal = Math.floor(Math.random() * (i + 1));
+            var temp = deck[i];
+            deck[i] = deck[randVal];
+            deck[randVal] = temp;
+        }
+        return deck;
+    }
 
     }
   };

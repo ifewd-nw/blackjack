@@ -9,19 +9,16 @@
           this.value = value; // Values will be from 1 to 13
           this.suit = suit;
     }
-  };
- 
-  Card.prototype.display = function() {
-    if (this.visible) {
-      return $('<div class="card ' + this.suit.name + '">' +
-                 '<span class="rank">' + this.getName() + '</span>' +
-                 '<span class="suit">' + this.suit.char + '</span>' +
-               '</div>').data('card', this);
-    } else {
-      return $('<div class="card back ' + this.suit.name + '">' +
-                 '<span class="rank">' + this.getName() + '</span>' +
-                 '<span class="suit">' + this.suit.char + '</span>' +
-               '</div>').data('card', this);
+
+    /**
+     * Method that constructs the HTML for displaying the Card.
+     * @return {jQuery object} formatted HTML string for the Card
+     */
+    Card.prototype.display = function() {
+        return $("<div class='card'>"+
+                     "<span class='rank'>" + this.getName() + "</span>" + 
+                     "</div>");
+    };
     }
   };
  

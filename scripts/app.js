@@ -47,6 +47,18 @@
                      "<span class='rank'>" + this.getName() + "</span>" + 
                      "</div>");
     };
+
+    /**
+     * Suits available to the deck
+     * @type {Object}
+     */
+    var Suit = Object.freeze({
+        SPADES: { value: 1, name: 'Spades' },
+        CLUBS: { value: 2, name: 'Clubs' },
+        HEARTS: { value: 3, name: 'Hearts' },
+        DIAMONDS: { value: 4, name: 'Diamonds' }
+    });
+
     }
   };
  

@@ -8,3 +8,21 @@
     margin: 0 auto;
 }
 
+#player{
+    margin-top: 1.5em;
+}
+
+.card {
+    height: 200px;
+    width: 150px;
+    margin-right: 1em;
+    padding-top: 2em;
+    text-align: center;
+    border: 1px solid black;
+    float: left;
+}
+
+.clearfix {
+    content: "";
+    clear: both;
+}

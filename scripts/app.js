@@ -117,3 +117,20 @@
         $("#dealer-hand").append(dealer[0].display());
         $("#dealer-hand").append("<div class='card'>hidden</div>"); // don't show the dealer's second card
     }
+
+    /**
+     * Start the game of BlackJack.
+     */
+    function startGame() {
+        var deck = createDeck();
+        deck = shuffleDeck(deck);
+        var playerHand = [];
+        var dealerHand = [];
+        playerHand.push(dealACard(deck));   // player gets a card first ...
+        dealerHand.push(dealACard(deck));   // then dealer
+        playerHand.push(dealACard(deck));       
+        dealerHand.push(dealACard(deck));
+        showInitialHands(playerHand, dealerHand);
+    }
+
+    startGame();

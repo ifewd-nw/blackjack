@@ -12,8 +12,17 @@
      * @param {integer} suit  the card's Suit
      */
     var Card = function(value, suit) {
+          if (value < 1 || value > 13) {
+            throw new IllegalArgumentException("Card value argument must be between 1 and 13, inclusive");
+          }
+          
           this.value = value; // Values will be from 1 to 13
           this.suit = suit;
+          this.visible = false;
+          this.EL = $("<div class='card " + this.suit.suitClass + "'>" +
+                         "<span class='rank'>" + this.getName() + "</span>" +
+                         "<span class='suit'>" + this.suit.char + "</span>" +    
+                         "</div>").data('card', this);
     }
 
     /**

@@ -127,8 +127,8 @@
      * @param  {Array} deck to pull a card from
      * @return {Card}      next card from the deck
      */
-    function dealACard(deck) {
-        return deck.shift();            // get and remove first Card from the deck
+    function dealACard() {
+        return deck.pop();            // get and remove a Card from the deck
     }
 
     /**

@@ -140,8 +140,10 @@
     function showInitialHands(player, dealer) {
         // show the player's cards
         player.forEach(function(value) {
-            $("#player-hand").append(value.display());
+            $("#player-hand").append(value.toggleVisibility());
         });
+
+        updateCurrentTotal("player");
 
         // show the dealer's first card, but not the second
         dealer.forEach(function(value) {
@@ -231,15 +233,27 @@
      * Start the game of BlackJack.
      */
     function startGame() {
-        var deck = createDeck();
-        deck = shuffleDeck(deck);
-        var playerHand = [];
-        var dealerHand = [];
-        playerHand.push(dealACard(deck));   // player gets a card first ...
-        dealerHand.push(dealACard(deck));   // then dealer
-        playerHand.push(dealACard(deck));       
-        dealerHand.push(dealACard(deck));
+        resetGame();
+        createDeck();
+        shuffleDeck();
+        playerHand.push(dealACard());
+
+        var dealerHiddenCard = dealACard();
+        dealerHiddenCard.toggleVisibility();
+        dealerHand.push(dealerHiddenCard);
+
+        playerHand.push(dealACard());
+        dealerHand.push(dealACard());
+
         showInitialHands(playerHand, dealerHand);
+    }
+
+    function resetGame() {
+        deck = [];
+        playerHand = [];
+        dealerHand = [];
+        $("#player-hand").empty();
+        $("#dealer-hand").empty();
     }
 
     startGame();

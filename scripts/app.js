@@ -60,21 +60,30 @@
      * @return {jQuery object} formatted HTML string for the Card
      */
     Card.prototype.display = function() {
-        return $("<div class='card'>"+
-                     "<span class='rank'>" + this.getName() + "</span>" + 
-                     "</div>");
+        return this.EL;
     };
 
     /**
-     * Suits available to the deck
-     * @type {Object}
+     * Invert the Card's visibility property then call its display function
+     * to return either a visible card or the back of the card.
+     * @return {jQuery Object} HTML string used to display the card to the user
      */
-    var Suit = Object.freeze({
-        SPADES: { value: 1, name: 'Spades' },
-        CLUBS: { value: 2, name: 'Clubs' },
-        HEARTS: { value: 3, name: 'Hearts' },
-        DIAMONDS: { value: 4, name: 'Diamonds' }
-    });
+    Card.prototype.toggleVisibility = function() {
+        this.visible = !this.visible;
+        if (!this.visible) {
+            this.EL.removeClass(this.suit).addClass('back');
+        } else {
+            this.EL.removeClass('back').addClass(this.suit);
+        }
+        return this.display();
+    };
+
+    var suits = {
+        clubs: { char: '&clubs;', suitClass: 'clubs' },
+        spades: { char: '&spades;', suitClass: 'spades' },
+        diams: { char: '&diams;', suitClass: 'diams' },
+        hearts: { char: '&hearts;', suitClass: 'hearts' }
+    };
 
     /**
      * Create a new deck of 52 cards

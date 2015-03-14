@@ -90,14 +90,12 @@
      * @return {Array} new deck of cards
      */
     function createDeck() {
-        var deck = [];
-        for (var i = Suit.SPADES.value; i <= Suit.DIAMONDS.value; i++) {
-            for (var j = 1; j <= 13; j++) {
-                var card = new Card(j, i);
+        for (var suit in suits) {
+            for (var index = 1; index <= NUMBER_OF_DIFF_VALUES; index++) {
+                var card = new Card(index, suits[suit]);
                 deck.push(card);
             }
         }
-        return deck;
     }
 
     /**

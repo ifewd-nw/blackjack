@@ -227,7 +227,13 @@
         //startGame();
     }
 
-    // TODO: add function to determine the winner
+    /**
+     * Illegal Argument Exception for use when validating function arguments.
+     * @param {String} message description of the error
+     */
+    function IllegalArgumentException(message) {
+        this.message = message;
+    }
 
     /**
      * Start the game of BlackJack.

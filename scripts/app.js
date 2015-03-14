@@ -104,14 +104,22 @@
      * @param  {Array} deck the deck to shuffle
      * @return {Array} returns the shuffled deck of cards
      */
-    function shuffleDeck(deck) {
+    function shuffleDeck() {
         for (var i = deck.length-1; i > 0; i--) {
-            var randVal = Math.floor(Math.random() * (i + 1));
+            var randVal = randomValue(i + 1);
             var temp = deck[i];
             deck[i] = deck[randVal];
             deck[randVal] = temp;
         }
-        return deck;
+    }
+
+    /**
+     * Get a random value between 0 and exclusive upper limit
+     * @param  {Number} bound upper limit
+     * @return {Number} random number generated
+     */
+    function randomValue(bound) {
+        return (Math.floor(Math.random() * bound));
     }
 
     /**

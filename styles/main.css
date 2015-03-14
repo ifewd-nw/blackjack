@@ -1,25 +1,38 @@
-* {
-    margin: 0;
-    padding: 0;
+body {
+    background: #056B42;
+    padding: 2em 6em;
+    font-family: 'Comic Sans MS', sans-serif;
 }
 
-.container {
-    width: 50%;
-    margin: 0 auto;
+h1 {
+    font-size: 3.2em;
+    color: white;
+    letter-spacing: 0.1em;
+    text-shadow: 5px 0px 5px rgba(255, 0, 0, 1);
+}
+
+section header {
+    margin-bottom: 20px;
 }
 
 #player{
     margin-top: 1.5em;
 }
 
-.card {
-    height: 200px;
-    width: 150px;
-    margin-right: 1em;
-    padding-top: 2em;
-    text-align: center;
-    border: 1px solid black;
-    float: left;
+#player h1, .buttons {
+    display: inline;
+}
+
+.buttons {
+    list-style: none;
+}
+
+.buttons li {
+    display: inline;
+}
+
+.buttons li button {
+    padding: 5px 15px;
 }
 
 .clearfix {

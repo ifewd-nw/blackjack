@@ -144,15 +144,86 @@
         });
 
         // show the dealer's first card, but not the second
-        $("#dealer-hand").append(dealer[0].display());
-        $("#dealer-hand").append("<div class='card'>hidden</div>"); // don't show the dealer's second card
+        dealer.forEach(function(value) {
+            $("#dealer-hand").append(value.toggleVisibility());
+        });
+
+        updateCurrentTotal("dealer");
     }
 
-    // TODO: add event handler when player clicks on 'Hit' button - player will be dealt another card from the deck.
-    
-    // TODO: add event handler when player clicks on 'Stand' button - dealer starts its turn
-    
-    // TODO: add function for dealer to determine if the dealer is going to either 'hit' or 'stand'
+    function updateCurrentTotal(user) {        
+        if (user.indexOf("player") > -1) {
+            var cTotal = getCurrentTotal(playerHand);
+            if (cTotal <= 21) {
+                updateUI("#player", cTotal);
+            } else {
+                console.log("Dealer wins. Player hand was greater than 21");
+            }
+        }
+        if (user.indexOf("dealer") > -1) {
+            var cTotal = getCurrentTotal(dealerHand);
+            if (cTotal <= 21) {
+                updateUI("#dealer", cTotal);
+            } else {
+                console.log("Player wins. Dealer hand was greater than 21");
+            }
+        }
+    }
+
+    function getUI(user) {
+        return $(user).find(".total");
+    }
+
+    function updateUI(user, total) {
+        var ui = getUI(user);
+        ui.empty();
+        ui.text(total);
+    }
+
+    $("#hit-me").click(function() {
+        var card = dealACard();
+        playerHand.push(card);
+        card = card.toggleVisibility();
+        $("#player-hand").append(card);
+        updateCurrentTotal("player");
+    });
+
+    $("#stand").click(function() {
+
+        while(getCurrentTotal(dealerHand) <= 16) {
+            var card = dealACard();
+            dealerHand.push(card);
+            updateCurrentTotal("dealer");
+            $("#dealer-hand").append(card);
+        }
+
+        dealerHand.forEach(function(card) {
+            if (!card.visible) {
+                card.toggleVisibility();
+            }
+        });
+        checkWinner();
+    });
+
+    function getCurrentTotal(userHand) {
+        var total = 0;
+        userHand.forEach(function(card) {
+            if (card.visible) {
+                total += card.getValue();
+            }
+        });
+        return total;
+    }
+
+    function checkWinner() {
+        if (getCurrentTotal(playerHand) > getCurrentTotal(dealerHand)) {
+            console.log("Player wins");
+        } else {
+            console.log("Dealer wins");
+        }
+
+        //startGame();
+    }
 
     // TODO: add function to determine the winner
 

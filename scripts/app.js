@@ -1,4 +1,10 @@
 (function($) {
+               
+    var NUMBER_OF_DIFF_VALUES = 13;  // 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A
+
+    var playerHand = [],    // the player's hand of cards
+          dealerHand = [],    // the dealer's hand of cards
+          deck = [];              // the deck of cards
 
     /**
      * Card object

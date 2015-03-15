@@ -107,10 +107,12 @@ function checkScores()
 function displayPlayAgain()
 {
     $("#play-again").show();
+    $("#hit, #stand").prop("disabled", true); // disable other buttons until play again is pressed
     $("#play-again").click(function() {
         $(".card").remove(); // remove all existing cards from UI
         resetGame();           // start the game over
         $(this).hide();           // hide the button again
+        $("#hit, #stand").prop("disabled", false); // re-enable the hit and stand buttons
     });
 }
 
